@@ -1,42 +1,59 @@
 
-var un_elemento = document.getElementById('divo');
+
+
+document.addEventListener('mousedown', function(event){
+	if(event.target.id ==='divo')
+	event.target.className = 'moviendo';
+});
+
+document.addEventListener('mousemove', function(event){
+	if(event.target.className ==='moviendo'){
+		event.target.style.top = event.clientY;
+		event.target.style.left = event.clientX;
+
+			console.log(event.target.style.top, event.target.style.left );
+	}
+
+
+});
+
+document.addEventListener('dragend', function(event){
+	if(event.target.className ==='moviendo'){
+		event.target.className = 'quieto';
+	}
+});
 
 
 
-	document.addEventListener("drag", function( event ) {
-		un_elemento.style.background = 'none';
 
 
-  }, false);
 
 
-document.addEventListener("dragstart", function( event ) {
-      un_elemento = event.target;
-      event.target.style.background = 'red';
 
-        var style = window.getComputedStyle(event.target, null);
-    event.dataTransfer.setData("text/plain",
-    (parseInt(style.getPropertyValue("left"),10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"),10) - event.clientY));
 
-	
 
-  }, false);
 
- document.addEventListener("dragend", function( event ) {
-      event.target.style.background = 'red';
 
-  }, false);
 
- document.addEventListener("dragover", function( event ) {
-      event.preventDefault();
-  }, false);
 
-   document.addEventListener("drop", function( event ) {
-      event.preventDefault();
-      var offset = event.dataTransfer.getData("text/plain").split(',');
-       un_elemento.style.left = (event.clientX + parseInt(offset[0],10)) + 'px';
-    un_elemento.style.top = (event.clientY + parseInt(offset[1],10)) + 'px';
-  }, false);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*********** form crear nodo **************************************/   /****** ojo por aqui esto dragged.parentNode.removeChild( dragged );
           event.target.appendChild( dragged );*****************/
