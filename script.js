@@ -1,34 +1,50 @@
 
 
+	document.addEventListener('mousedown', function(el){
+		if(el.target.classList.contains('quieto')){   
+			el.target.classList.remove("quieto");                                                                                               
+			el.target.className += ' moviendo'; 
+				console.log(el.target.className, el);
 
-document.addEventListener('mousedown', function(event){
-	if(event.target.id ==='divo')
-	event.target.className = 'moviendo';
+				el.target.style.cursor = '-webkit-grabbing';
+		}
+	
+	});
+
+	document.addEventListener('mousemove', function(el){
+		
+			var x = event.clientX;
+			var y = event.clientY;
+		console.log(x, y);
+
+		if(el.target.classList.contains('moviendo')){
+			el.target.style.top = el.clientX + 'px';
+			el.target.style.left = el.clientY + 'px';
+
+			console.log(el);
+			
+		}
+	});
+
+document.addEventListener('dragend', function(el){
+	if(el.target.classList.contains('moviendo')){   
+			el.target.classList.remove("moviendo");                                                                                               
+			el.target.className += ' quieto'; 
+				console.log(el.target.className, el);
+		}
 });
 
-document.addEventListener('mousemove', function(event){
-	if(event.target.className ==='moviendo'){
-		event.target.style.top = event.clientY;
-		event.target.style.left = event.clientX;
-
-			console.log(event.target.style.top, event.target.style.left );
-	}
-
-
-});
-
-document.addEventListener('dragend', function(event){
-	if(event.target.className ==='moviendo'){
-		event.target.className = 'quieto';
-	}
+document.addEventListener('mouseup', function(el){
+	if(el.target.classList.contains('moviendo')){   
+			el.target.classList.remove("moviendo");                                                                                               
+			el.target.className += ' quieto'; 
+				console.log(el.target.className, el);
+		}
 });
 
 
-
-
-
-
-
+   
+	//document.addEventListener()
 
 
 
@@ -67,8 +83,8 @@ document.addEventListener('dragend', function(event){
 
 document.getElementById('crear_nodo').addEventListener('click', function(){
 	document.getElementById('form_crear_nodo').style.display = "block";
-});
 
+});
 document.getElementById('button_form_crear_nodo_ok').addEventListener('click', function(){
 	document.getElementById('form_crear_nodo').style.display = "none";
 
@@ -80,7 +96,12 @@ document.getElementById('button_form_crear_nodo_ok').addEventListener('click', f
 	var node_nombre_value = node_nombre.value;
 
 
-	document.getElementById('content').innerHTML += "<div style='width: 100px; height: 100px; background-color: red; top: "+ i + "px; left: "+ i + "px;  /*border-radius:50%;*/' id='divo' draggable='true'><div draggable='true' class='m'>" + node_text_value + "</div></div>";
+	document.getElementById('content').innerHTML += "<div style='width: 100px; height: 100px; background-color: red; top: "+ i + "px; left: "+ i + "px;  /*border-radius:50%;*/' class='divo quieto'></div>";
+
+
+
+
+
 
 i+=100;
 
