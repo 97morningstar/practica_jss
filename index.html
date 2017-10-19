@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript"></script>
+
+	<style type="text/css">
+
+
+
+		div#divo{
+    		position: absolute;
+    		overflow: hidden;
+		}
+
+
+		form.form_crear_nodo{
+			display: none;
+		}
+		form.form_crear_conexion{
+			display: none;
+		}
+
+
+
+	</style>
+
+</head>
+<body>
+
+<button id="crear_nodo">Crear nodo</button>
+<button id="crear_conexion">Crear conexion</button> <!-- falta eliminar nodo y eliminar conexion -->
+
+<br/>
+<br/>
+<br/>
+<form id="form_crear_nodo" class="form_crear_nodo">
+	<p id="numero_nodo"></p>
+	<label for="nombre_nodo_crear">Nombre del nodo</label>
+	<input type="text" name="" id="nombre_nodo_crear">
+
+	<label for="texto">Texto</label>
+	<input type="text" name="" id="texto_nodo">
+<br/>
+	<input type="button" value="Ok" id="button_form_crear_nodo_ok">
+	<input type="button" value="Cancelar" id="button_form_crear_nodo_cancelar">
+</form>
+
+<br/>
+<br/>
+<br/>
+
+<form id="form_crear_conexion" class="form_crear_conexion">   <!-- este no deberia aparecer a menos que hallan 2 o mas nodos creados -->
+	<label for="texto">Nombre conexion</label>
+	<input type="text" name="" id="textoconexion">
+<br/>
+	<label for="nodo_partida">Nodo de partida (nombre, numero)</label>
+	<input type="text" name="" id="nodo_partida">
+
+		<label for="nodo_llegada">Nodo de llegada (nombre, numero)</label>
+	<input type="text" name="" id="nodo_llegada">
+<br/>
+	<input type="button" value="Ok" id="button_form_crear_conexion_ok">
+	<input type="button" value="Cancelar" id="button_form_crear_conexion_cancelar">
+</form>
+
+
+<div class="content" id="content"></div>
+
+
+<!--<div style="width: 100px; height: 100px; background-color: red;" id="divo" draggable="true"></div>-->
+
+
+
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
